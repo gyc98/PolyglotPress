@@ -7,7 +7,6 @@ For further reference, please consider the following sections:
 * [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/3.5.4/maven-plugin)
 * [Create an OCI image](https://docs.spring.io/spring-boot/3.5.4/maven-plugin/build-image.html)
 * [Spring Web](https://docs.spring.io/spring-boot/3.5.4/reference/web/servlet.html)
-* [OpenAI](https://docs.spring.io/spring-ai/reference/api/chat/openai-chat.html)
 
 ### Guides
 The following guides illustrate how to use some features concretely:

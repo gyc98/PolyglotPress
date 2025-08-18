@@ -1,4 +1,4 @@
-package com.gyc98.opensource.PolyglotPress;
+package com.gyc98.opensource.polyglotpress;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

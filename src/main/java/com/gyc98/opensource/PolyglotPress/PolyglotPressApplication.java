@@ -1,4 +1,4 @@
-package com.gyc98.opensource.PolyglotPress;
+package com.gyc98.opensource.polyglotpress;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
