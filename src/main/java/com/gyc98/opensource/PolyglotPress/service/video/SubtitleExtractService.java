@@ -1,5 +1,15 @@
 package com.gyc98.opensource.polyglotpress.service.video;
 
-public interface SubtitleExtractService {
+import com.gyc98.opensource.polyglotpress.model.SubtitleModel;
 
+import java.util.List;
+
+public interface SubtitleExtractService {
+    /**
+     * 从视频文件中提取字幕
+     *
+     * @param videoPath
+     * @return
+     */
+    List<SubtitleModel> extractSubtitleFromVideo(String videoPath);
 }

@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PolyglotPressApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PolyglotPressApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(PolyglotPressApplication.class, args);
+    }
 
 }
