@@ -15,10 +15,10 @@ public class SubtitleModel {
     /**
      * 原始字幕语言
      */
-    private Locale originLocale;
+    private String originLocale;
 
     /**
      * 目标字幕语言
      */
-    private Locale targetLocale;
+    private String targetLocale;
 }

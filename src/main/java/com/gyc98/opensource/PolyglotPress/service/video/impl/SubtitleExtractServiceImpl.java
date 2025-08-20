@@ -37,6 +37,7 @@ public class SubtitleExtractServiceImpl implements SubtitleExtractService {
             extractSubtitleToFile(videoPath, streamInfo.getIndex(), subtitlePath);
             // 将字幕读取出来
             SubtitleModel subtitleModel = readSubtitleFromFile(subtitlePath);
+            subtitleModel.setOriginLocale(streamInfo.getTags().getLanguage());
             subtitleModels.add(subtitleModel);
         }
 
@@ -79,10 +80,6 @@ public class SubtitleExtractServiceImpl implements SubtitleExtractService {
     private SubtitleModel readSubtitleFromFile(String srtPath) {
         SubtitleModel model = new SubtitleModel();
         List<SubtitleItem> items = new ArrayList<>();
-
-        // 可根据实际需求设置语言，这里作为示例
-        model.setOriginLocale(Locale.ENGLISH);
-        model.setTargetLocale(Locale.SIMPLIFIED_CHINESE);
 
         // 匹配 SRT 时间轴格式：00:00:20,000 --> 00:00:24,400
         Pattern timePattern = Pattern.compile("\\d{2}:\\d{2}:\\d{2},\\d{3}\\s*-->\\s*\\d{2}:\\d{2}:\\d{2},\\d{3}");
