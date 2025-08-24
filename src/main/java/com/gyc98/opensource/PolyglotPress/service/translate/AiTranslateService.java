@@ -5,5 +5,7 @@ import com.gyc98.opensource.polyglotpress.model.SubtitleModel;
 import java.util.Locale;
 
 public interface AiTranslateService {
-    void translateSubtitle(SubtitleModel subtitleModel);
+    String asyncTranslateSubtitle(SubtitleModel subtitleModel, String videoPath);
+
+    SubtitleModel query(String id);
 }

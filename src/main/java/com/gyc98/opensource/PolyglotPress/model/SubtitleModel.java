@@ -3,7 +3,6 @@ package com.gyc98.opensource.polyglotpress.model;
 import lombok.Data;
 
 import java.util.List;
-import java.util.Locale;
 
 @Data
 public class SubtitleModel {

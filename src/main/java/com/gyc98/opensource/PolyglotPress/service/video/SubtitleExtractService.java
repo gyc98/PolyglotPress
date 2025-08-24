@@ -12,4 +12,11 @@ public interface SubtitleExtractService {
      * @return
      */
     List<SubtitleModel> extractSubtitleFromVideo(String videoPath);
+
+    /**
+     * 将字幕提取到srt文件中
+     * @param subtitleModel
+     * @return
+     */
+    String exportSubtitleToFile(SubtitleModel model, String videoPath);
 }

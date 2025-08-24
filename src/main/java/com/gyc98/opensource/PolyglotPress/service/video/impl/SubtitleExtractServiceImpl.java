@@ -44,6 +44,57 @@ public class SubtitleExtractServiceImpl implements SubtitleExtractService {
         return subtitleModels;
     }
 
+    @Override
+    public String exportSubtitleToFile(SubtitleModel model, String videoPath) {
+        String extractFilePath = SubtitlePathGenerator.generateSubtitlePath(videoPath, 100);;
+        File file = new File(extractFilePath);
+
+        try (BufferedWriter writer = new BufferedWriter(
+                new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8))) {
+            List<SubtitleItem> items = model.getItems();
+            for (int i = 0; i < items.size(); i++) {
+                SubtitleItem item = items.get(i);
+                if (item == null) continue;
+
+                // 写入序号
+                writer.write(String.valueOf(i + 1));
+                writer.newLine();
+
+                // 写入时间轴
+                writer.write(item.getStartTime() + " --> " + item.getEndTime());
+                writer.newLine();
+
+                // 写入原始文本
+                String originalText = item.getOriginalText();
+                if (originalText != null && !originalText.trim().isEmpty()) {
+                    writer.write(originalText);
+                    writer.newLine();
+                }
+
+                // 写入翻译文本（如果存在）
+                String translatedText = item.getTranslatedText();
+                if (translatedText != null && !translatedText.trim().isEmpty()) {
+                    writer.write(translatedText);
+                    writer.newLine();
+                } else {
+                    // 即使没有翻译也保留一行空或原文，避免格式错乱
+                    // 可选：写入空行或占位符
+                    writer.newLine(); // 留空行保持结构一致
+                }
+
+                // 每个字幕块之间加一个空行
+                writer.newLine();
+            }
+
+            writer.flush();
+            return extractFilePath;
+
+        } catch (IOException e) {
+            LOGGER.error("write srt failed", e);
+            return null;
+        }
+    }
+
     private Streams fetchSubtitleStreamMetaData(String mkvPath) {
         ProcessBuilder processBuilder = new ProcessBuilder();
         // 构建 ffprobe 命令

@@ -35,7 +35,16 @@ public class SubtitleExtractController {
         subtitleModel.setTargetLocale(targetLang);
 
         // 翻译
-        aiTranslateService.translateSubtitle(subtitleModel);
+        String id = aiTranslateService.asyncTranslateSubtitle(subtitleModel, videoPath);
+
+        // 下次带着id来查询
+        return id;
+    }
+
+    @PostMapping("/query")
+    public String extraceSubtitleAndTranslate(@RequestParam String id) {
+        // 翻译
+        SubtitleModel subtitleModel = aiTranslateService.query(id);
 
         return JSON.toJSONString(subtitleModel);
     }
